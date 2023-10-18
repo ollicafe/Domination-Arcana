@@ -1,0 +1,7 @@
+main: com.ollicafe.dominationarcana.DominationArcana
+name: DominationArcana
+version: 1.0
+author: olli
+website: ollicafe.com
+description: Fall before absolute power
+api-version: 1.16
