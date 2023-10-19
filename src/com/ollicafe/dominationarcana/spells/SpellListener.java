@@ -7,19 +7,15 @@ import com.ollicafe.dominationarcana.DominationArcana;
 
 public class SpellListener  implements Listener{
 	
-	private DominationArcana plugin;
-	private Ash ash;
 	
-	public SpellListener(DominationArcana plugin) {
-		this.plugin = plugin;
-		ash = new Ash(plugin);
+	public SpellListener() {
 	}
 	
 	
 	@EventHandler
 	public void onSpell(SpellEvent e) {
-		System.out.println("Spell Casted: " + e.getSpellType().toString());
-		System.out.println("Spell Casted: " + e.getPlayer().getName());
+		System.out.println("Spell Casted " + '"' + e.getSpellType().toString() + '"' + 
+				" by [" + e.getPlayer().getName() + "]");
 		
 	}
 

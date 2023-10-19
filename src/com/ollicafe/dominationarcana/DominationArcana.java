@@ -4,6 +4,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.ollicafe.dominationarcana.items.ItemListener;
+import com.ollicafe.dominationarcana.spells.SpellListener;
 import com.ollicafe.dominationarcana.util.Commands;
 
 public class DominationArcana extends JavaPlugin{
@@ -24,7 +25,7 @@ public class DominationArcana extends JavaPlugin{
 	
 	private void registerEvents() {
 		PluginManager pm = this.getServer().getPluginManager();
-		//pm.registerEvents(new SpellListener(), this);
-		pm.registerEvents(new ItemListener(), this);
+		pm.registerEvents(new SpellListener(), this);
+		pm.registerEvents(new ItemListener(this), this);
 	}
 }

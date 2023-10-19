@@ -28,7 +28,8 @@ public class Ash extends Spell{
 	}
 	
 	public void castSpell(Player player, SpellType spellType) {
-		if(createEvent(player, spellType)){//casts spell if event isn't cancelled
+		boolean casted = createEvent(player, spellType);
+		if(casted){//casts spell if event isn't cancelled
 			switch(spellType) {
 			case RETURN_TO_ASH:
 				returnToAsh(player.getLocation());
@@ -51,14 +52,14 @@ public class Ash extends Spell{
 		
 		new BukkitRunnable() {
 			int count = 0;
-			Vector movement = null;
 			List<FallingBlock> fblocks = new ArrayList<>();
 			
 			
-			int sec = 33 + (1*1);
+			int sec = 33 + (1*1);//duration is 33 sec plus soul lvl
 			
 			public void run() {
-				if(count >= 20 * sec) {
+				if(count >= 20 * sec) {//probably should surround this in while loop for is cancelled
+					
 					
 					
 					for(FallingBlock b:fblocks) {
