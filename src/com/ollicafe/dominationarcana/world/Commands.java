@@ -1,4 +1,4 @@
-package com.ollicafe.dominationarcana.util;
+package com.ollicafe.dominationarcana.world;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

@@ -5,7 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.ollicafe.dominationarcana.items.ItemListener;
 import com.ollicafe.dominationarcana.spells.SpellListener;
-import com.ollicafe.dominationarcana.util.Commands;
+import com.ollicafe.dominationarcana.world.Commands;
 
 public class DominationArcana extends JavaPlugin{
 

@@ -6,6 +6,7 @@ import java.util.List;
 import org.bukkit.Location;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 
 public class BlockUtil {
 	
@@ -34,6 +35,17 @@ public class BlockUtil {
 				
 			}
 		}
+		//send update to nearby players for chunk change
+		int chunkX = loc.getBlockX()/16,chunkZ = loc.getBlockZ()/16;
+		int chunkRadius = (radius/16) + 1;
+		
+		for(int cX = chunkX - chunkRadius; cX <= chunkX + chunkRadius; cX++) {
+			for(int cZ = chunkZ - chunkRadius; cZ <= chunkZ + chunkRadius; cZ++) {
+				loc.getWorld().refreshChunk(cX,cZ);
+				
+			}
+		}
+		
 		
 	}
 
