@@ -3,10 +3,11 @@ package com.ollicafe.dominationarcana;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
 import com.ollicafe.dominationarcana.spells.Ash;
+import com.ollicafe.dominationarcana.spells.Spell;
+import com.ollicafe.dominationarcana.spells.SpellType;
 
 public class Commands implements CommandExecutor{
 	
@@ -23,7 +24,8 @@ public class Commands implements CommandExecutor{
 				Player player = (Player) sender;
 				Ash ash = new Ash(plugin);
 				
-				ash.returnToAsh(player.getLocation());
+				
+				ash.castSpell(player, SpellType.RETURN_TO_ASH);
 				player.sendMessage("return to ash");
 				return true;
 			} else {

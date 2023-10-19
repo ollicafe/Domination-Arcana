@@ -24,6 +24,22 @@ public class Ash extends Spell{
 	
 	public Ash(DominationArcana plugin) {
 		this.plugin = plugin;
+		element = Element.ASH;
+	}
+	
+	public void castSpell(Player player, SpellType spellType) {
+		if(createEvent(spellType)){//casts spell if event isn't cancelled
+			switch(spellType) {
+			case RETURN_TO_ASH:
+				returnToAsh(player.getLocation());
+				break;
+			default:
+				System.out.println("Spell Type" + '"' + spellType.toString() + '"' +
+						" is invalid for the "+ "'" + element.toString() + '"' + " element" );
+				break;
+			}
+			
+		}
 	}
 	
 	//Powerful return to ash spell
@@ -89,11 +105,20 @@ public class Ash extends Spell{
 				
 				
 				fblocks.add(fblock);
-				//turn blocks to either stone, gravel, or cobblestone. or maybe basalt?
 				
 				if((count % 3) == 0) {
-					if(fblocks.get(0) != null) fblocks.get(0).remove();
-					
+					//remove up to 7 blocks from the list, starting at 0
+					//create a list of ash, add ash particles to list.
+					int turnAsh = Math.min(r.nextInt(7), r.nextInt(fblocks.size()));
+					for(int dust =0; dust < turnAsh; dust++) {
+						FallingBlock fb = fblocks.get(0);
+						if(fb != null) {
+							fb.getLocation();//TODO:create particle 
+							
+							fb.remove();;
+							
+						}
+					}
 				}
 				
 				count++;

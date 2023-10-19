@@ -8,5 +8,5 @@ api-version: 1.16
 
 commands:
   ash:
-    description: Use this to sit down where you are currently standing
-    usage: /sit
+    description: Return to Ash
+    usage: /ash
