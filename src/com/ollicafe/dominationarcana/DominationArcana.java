@@ -4,7 +4,6 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.ollicafe.dominationarcana.listeners.ItemListener;
-import com.ollicafe.dominationarcana.listeners.SpellListener;
 
 public class DominationArcana extends JavaPlugin{
 
@@ -13,6 +12,8 @@ public class DominationArcana extends JavaPlugin{
 	public void onEnable() {
 		System.out.println("Fall");
 		registerEvents();
+		this.getCommand("ash").setExecutor(new Commands(this));
+		
 	}
 	
 	@Override

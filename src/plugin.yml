@@ -5,3 +5,8 @@ author: olli
 website: ollicafe.com
 description: Fall before absolute power
 api-version: 1.16
+
+commands:
+  ash:
+    description: Use this to sit down where you are currently standing
+    usage: /sit
