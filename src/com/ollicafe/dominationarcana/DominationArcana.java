@@ -3,7 +3,8 @@ package com.ollicafe.dominationarcana;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.ollicafe.dominationarcana.listeners.ItemListener;
+import com.ollicafe.dominationarcana.items.ItemListener;
+import com.ollicafe.dominationarcana.util.Commands;
 
 public class DominationArcana extends JavaPlugin{
 

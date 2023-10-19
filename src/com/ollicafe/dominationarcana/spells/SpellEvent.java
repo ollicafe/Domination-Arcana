@@ -1,10 +1,8 @@
-package com.ollicafe.dominationarcana.listeners;
+package com.ollicafe.dominationarcana.spells;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-
-import com.ollicafe.dominationarcana.spells.Soul;
-import com.ollicafe.dominationarcana.spells.SpellType;
 
 public class SpellEvent extends Event{
 
@@ -31,17 +29,22 @@ public class SpellEvent extends Event{
     //---------Event stuff here -----------
     
     private final SpellType spellType;
+    private final Player player;
     
     
-    public SpellEvent(SpellType spellType, Soul soul) {
+    public SpellEvent(Player player, SpellType spellType) {
     	this.spellType = spellType;
     	this.isCancelled = false;
+    	this.player = player;
     }
     
     public SpellType getSpellType() {
     	return spellType;
     }
     
+    public Player getPlayer() {
+    	return player;
+    }
     
     
     

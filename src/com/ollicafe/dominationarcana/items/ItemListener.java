@@ -1,4 +1,4 @@
-package com.ollicafe.dominationarcana.listeners;
+package com.ollicafe.dominationarcana.items;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -7,8 +7,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.ollicafe.dominationarcana.items.DAItem;
-import com.ollicafe.dominationarcana.items.Tome;
 import com.ollicafe.dominationarcana.util.ItemUtil;
 
 public class ItemListener implements Listener{

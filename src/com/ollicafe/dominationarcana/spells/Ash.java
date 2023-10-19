@@ -28,7 +28,7 @@ public class Ash extends Spell{
 	}
 	
 	public void castSpell(Player player, SpellType spellType) {
-		if(createEvent(spellType)){//casts spell if event isn't cancelled
+		if(createEvent(player, spellType)){//casts spell if event isn't cancelled
 			switch(spellType) {
 			case RETURN_TO_ASH:
 				returnToAsh(player.getLocation());
@@ -109,7 +109,7 @@ public class Ash extends Spell{
 				if((count % 3) == 0) {
 					//remove up to 7 blocks from the list, starting at 0
 					//create a list of ash, add ash particles to list.
-					int turnAsh = Math.min(r.nextInt(7), r.nextInt(fblocks.size()));
+					int turnAsh = Math.min(r.nextInt(4, 7), r.nextInt(fblocks.size()));
 					for(int dust =0; dust < turnAsh; dust++) {
 						FallingBlock fb = fblocks.get(0);
 						if(fb != null) {

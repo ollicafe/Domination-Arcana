@@ -1,11 +1,9 @@
-package com.ollicafe.dominationarcana.listeners;
+package com.ollicafe.dominationarcana.spells;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 import com.ollicafe.dominationarcana.DominationArcana;
-import com.ollicafe.dominationarcana.spells.Ash;
-import com.ollicafe.dominationarcana.spells.SpellType;
 
 public class SpellListener  implements Listener{
 	
@@ -20,12 +18,9 @@ public class SpellListener  implements Listener{
 	
 	@EventHandler
 	public void onSpell(SpellEvent e) {
-		SpellType spell = e.getSpellType();
-		switch(spell) {
-		case RETURN_TO_ASH:
-			ash.returnToAsh(null);
-			break;
-		}
+		System.out.println("Spell Casted: " + e.getSpellType().toString());
+		System.out.println("Spell Casted: " + e.getPlayer().getName());
+		
 	}
 
 }
