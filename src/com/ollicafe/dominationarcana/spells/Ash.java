@@ -11,6 +11,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -33,6 +34,9 @@ public class Ash extends Spell{
 			switch(spellType) {
 			case RETURN_TO_ASH:
 				returnToAsh(player.getLocation());
+				break;
+			case PYROCLASTIC_SURGE:
+				pyroclasticSurge(player);
 				break;
 			default:
 				System.out.println("Spell Type" + '"' + spellType.toString() + '"' +
@@ -117,7 +121,6 @@ public class Ash extends Spell{
 							fb.getLocation();//TODO:create particle 
 							
 							fb.remove();;
-							
 						}
 					}
 				}
@@ -126,6 +129,32 @@ public class Ash extends Spell{
 			}
 		}.runTaskTimer(plugin.getPlugin(plugin.getClass()), 0 ,0);
 		
+	}
+	
+	public void pyroclasticSurge(Player player) {
+		
+		
+		new BukkitRunnable() {
+			
+
+			Vector dir = player.getEyeLocation().getDirection();
+			Location origin = player.getEyeLocation();
+			Vector inc = dir.multiply(2);
+			Location loc = origin;
+			
+			public void run() {
+				for(int i = 0; i <= 33; i++) {
+					loc = loc.add(inc);
+					for(int j = 0; j <= 4; j++) {
+						TNTPrimed tnt = player.getWorld().spawn(loc, TNTPrimed.class);
+						tnt.setYield(i+2);
+						tnt.setFuseTicks(0);
+					}
+				}
+				
+				cancel();
+			}
+		}.runTaskTimer(plugin.getPlugin(plugin.getClass()), 0 ,0);
 	}
 	
 	

@@ -49,7 +49,10 @@ public class ItemListener implements Listener{
 				&& oItem.equals(new ItemStack(Material.BOOK))) {
 			ash.castSpell(player, SpellType.RETURN_TO_ASH);
 		}
-		
+		if(mItem.equals(new ItemStack(Material.BLAZE_ROD)) 
+				&& oItem.equals(new ItemStack(Material.BOOK))) {
+			ash.castSpell(player, SpellType.PYROCLASTIC_SURGE);
+		}
 		//check for combos first
 		if(!mItemType.equals(DAItem.NULL) && !oItemType.equals(DAItem.NULL)) {
 			
