@@ -32,7 +32,7 @@ public class Commands implements CommandExecutor{
 				//spm.castSpell(player, SpellType.RETURN_TO_ASH);
 				Soul soul = som.getSoul(player);
 				soul.setLevel(soul.getLevel() + 1);
-				player.sendMessage("Your level is:" + soul.getLevel());
+				player.sendMessage("Your level is: " + soul.getLevel());
 				return true;
 			} else {
 				sender.sendMessage("Consoles can't sit silly");

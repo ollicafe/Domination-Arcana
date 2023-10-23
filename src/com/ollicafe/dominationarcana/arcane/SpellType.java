@@ -4,7 +4,10 @@ public enum SpellType {
 	
 	RETURN_TO_ASH(Element.ASH, true),
 	PYROCLASTIC_SURGE(Element.ASH, true),
-	FIREBALL(Element.FIRE, false);
+	FIREBALL(Element.FIRE, false),
+	SUMMON_SUIT(Element.IRON, true)
+	
+	;
 	
 	private boolean domination;
 	private Element element;

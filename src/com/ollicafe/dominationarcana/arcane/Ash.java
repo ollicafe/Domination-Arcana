@@ -11,14 +11,14 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
+import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import com.ollicafe.dominationarcana.DominationArcana;
 import com.ollicafe.dominationarcana.util.BlockUtil;
 
-public class Ash{
+public class Ash implements Listener{
 	
 	private BlockUtil blockUtil = new BlockUtil();
 	private DominationArcana plugin;
@@ -29,7 +29,7 @@ public class Ash{
 	
 	
 	//Powerful return to ash spell
-	public void returnToAsh(Soul soul) {
+	public boolean returnToAsh(Soul soul) {
 		Location loc = soul.getEntity().getLocation();
 		int radius = 33 + (1* 1);//player level adds to radius
 
@@ -111,11 +111,12 @@ public class Ash{
 			}
 		}.runTaskTimer(plugin.getPlugin(plugin.getClass()), 0 ,0);
 		
+		return true;
 	}
 	
-	public void pyroclasticSurge(Soul soul) {
+	public boolean pyroclasticSurge(Soul soul) {
 		//for now only players can cast:
-		if(!soul.isPlayer())return;
+		if(!soul.isPlayer()) return false;
 
 		Player player = (Player) soul.getEntity();
 		new BukkitRunnable() {
@@ -140,6 +141,8 @@ public class Ash{
 				cancel();
 			}
 		}.runTaskTimer(plugin.getPlugin(plugin.getClass()), 0 ,0);
+		
+		return true;
 	}
 	
 	

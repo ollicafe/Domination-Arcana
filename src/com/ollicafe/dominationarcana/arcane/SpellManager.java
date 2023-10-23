@@ -19,17 +19,26 @@ public class SpellManager {
 		boolean casted = createEvent(soul, spellType);
 		if(casted){//casts spell if event isn't cancelled
 			switch(spellType) {
+			//Ash
 			case RETURN_TO_ASH:
-				ash.returnToAsh(soul);
+				casted = ash.returnToAsh(soul);
 				break;
 			case PYROCLASTIC_SURGE:
-				ash.pyroclasticSurge(soul);
+				casted = ash.pyroclasticSurge(soul);
+				break;
+			//Fire
+			case FIREBALL:
+				break;
+			//Iron
+			case SUMMON_SUIT:
 				break;
 			default:
 				System.out.println("Spell Type" + '"' + spellType.toString() + '"' );
 				break;
 			}
-			
+		}
+		if(!casted) {
+			System.out.println("Spell Type" + '"' + spellType.toString() + '"' + " failed to cast" );
 		}
 	}
 	

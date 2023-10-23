@@ -3,7 +3,8 @@ package com.ollicafe.dominationarcana.arcane;
 public enum Element {
 	
 	ASH(Arcana.MAGUS),
-	FIRE(Arcana.MAGUS);
+	FIRE(Arcana.MAGUS),
+	IRON(Arcana.ALCHEMYST);
 	
 	private Arcana arcana;
 	
