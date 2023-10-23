@@ -15,7 +15,7 @@ public class SpellListener  implements Listener{
 	@EventHandler
 	public void onSpell(SpellEvent e) {
 		System.out.println("Spell Casted " + '"' + e.getSpellType().toString() + '"' + 
-				" by [" + e.getPlayer().getName() + "]");
+				" by [" + e.getSoul().getEntity().getName() + "]");
 		
 	}
 

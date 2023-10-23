@@ -10,6 +10,8 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 import com.ollicafe.dominationarcana.DominationArcana;
+import com.ollicafe.dominationarcana.arcane.Soul;
+import com.ollicafe.dominationarcana.arcane.SoulManager;
 import com.ollicafe.dominationarcana.arcane.SpellManager;
 import com.ollicafe.dominationarcana.arcane.SpellType;
 import com.ollicafe.dominationarcana.util.ItemUtil;
@@ -17,12 +19,14 @@ import com.ollicafe.dominationarcana.util.ItemUtil;
 public class ItemListener implements Listener{
 	private ItemUtil iUtil = new ItemUtil();
 	private DominationArcana plugin;
-	private SpellManager sm;
+	private SpellManager spm;
+	private SoulManager som;
 	
 	public ItemListener(DominationArcana plugin) {
 		this.plugin = plugin;
 		//initialize all the spells
-		this.sm = new SpellManager(plugin);
+		this.spm = new SpellManager(plugin);
+		this.som = new SoulManager();
 	}
 	
 	@EventHandler
@@ -43,15 +47,16 @@ public class ItemListener implements Listener{
 		
 		//this order means if you hold two magic items that aren't a combo, 
 		//you use the main hand one first
+		Soul soul = som.getSoul(player);
 		
 		//temp code
 		if(mItem.equals(new ItemStack(Material.NETHER_STAR)) 
 				&& oItem.equals(new ItemStack(Material.BOOK))) {
-			sm.castSpell(player, SpellType.RETURN_TO_ASH);
+			spm.castSpell(soul, SpellType.RETURN_TO_ASH);
 		}
 		if(mItem.equals(new ItemStack(Material.BLAZE_ROD)) 
 				&& oItem.equals(new ItemStack(Material.BOOK))) {
-			sm.castSpell(player, SpellType.PYROCLASTIC_SURGE);
+			spm.castSpell(soul, SpellType.PYROCLASTIC_SURGE);
 			
 		}
 		//check for combos first

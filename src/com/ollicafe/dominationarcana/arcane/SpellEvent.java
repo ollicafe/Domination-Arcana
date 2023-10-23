@@ -29,21 +29,21 @@ public class SpellEvent extends Event{
     //---------Event stuff here -----------
     
     private final SpellType spellType;
-    private final Player player;
+    private final Soul soul;
     
     
-    public SpellEvent(Player player, SpellType spellType) {
+    public SpellEvent(Soul soul, SpellType spellType) {
     	this.spellType = spellType;
     	this.isCancelled = false;
-    	this.player = player;
+    	this.soul = soul;
     }
     
     public SpellType getSpellType() {
     	return spellType;
     }
     
-    public Player getPlayer() {
-    	return player;
+    public Soul getSoul() {
+    	return soul;
     }
     
     

@@ -29,7 +29,8 @@ public class Ash{
 	
 	
 	//Powerful return to ash spell
-	public void returnToAsh(Location loc) {
+	public void returnToAsh(Soul soul) {
+		Location loc = soul.getEntity().getLocation();
 		int radius = 33 + (1* 1);//player level adds to radius
 
 		List<Block> blocks = blockUtil.getNearbyBlocks(loc, radius);
@@ -112,9 +113,11 @@ public class Ash{
 		
 	}
 	
-	public void pyroclasticSurge(Player player) {
-		
-		
+	public void pyroclasticSurge(Soul soul) {
+		//for now only players can cast:
+		if(!soul.isPlayer())return;
+
+		Player player = (Player) soul.getEntity();
 		new BukkitRunnable() {
 			
 

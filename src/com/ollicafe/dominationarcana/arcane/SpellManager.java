@@ -15,15 +15,15 @@ public class SpellManager {
 		this.ash = new Ash(plugin);
 	}
 	
-	public void castSpell(Player player, SpellType spellType) {
-		boolean casted = createEvent(player, spellType);
+	public void castSpell(Soul soul, SpellType spellType) {
+		boolean casted = createEvent(soul, spellType);
 		if(casted){//casts spell if event isn't cancelled
 			switch(spellType) {
 			case RETURN_TO_ASH:
-				ash.returnToAsh(player.getLocation());
+				ash.returnToAsh(soul);
 				break;
 			case PYROCLASTIC_SURGE:
-				ash.pyroclasticSurge(player);
+				ash.pyroclasticSurge(soul);
 				break;
 			default:
 				System.out.println("Spell Type" + '"' + spellType.toString() + '"' );
@@ -33,8 +33,8 @@ public class SpellManager {
 		}
 	}
 	
-	public boolean createEvent(Player player,SpellType spellType) {
-		SpellEvent event = new SpellEvent(player, spellType);
+	public boolean createEvent(Soul soul,SpellType spellType) {
+		SpellEvent event = new SpellEvent(soul, spellType);
 		Bukkit.getPluginManager().callEvent(event);
 		if(event.isCancelled()) return false;
 		return true;
