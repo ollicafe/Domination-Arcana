@@ -22,7 +22,7 @@ public class Commands implements CommandExecutor{
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (label.equalsIgnoreCase("ash")) {
+		if (label.equalsIgnoreCase("soul")) {
 			if(sender instanceof Player) {
 				Player player = (Player) sender;
 				
@@ -35,7 +35,7 @@ public class Commands implements CommandExecutor{
 				return true;
 			}
 			
-		}
+		} 
 		return false;
 	}
 

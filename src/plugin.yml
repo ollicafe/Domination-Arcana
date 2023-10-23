@@ -7,6 +7,6 @@ description: Fall before absolute power
 api-version: 1.16
 
 commands:
-  ash:
-    description: Return to Ash
-    usage: /ash
+  soul:
+    description: shows your soul
+    usage: /soul

@@ -14,7 +14,7 @@ public class DominationArcana extends JavaPlugin{
 	public void onEnable() {
 		System.out.println("Fall");
 		registerEvents();
-		this.getCommand("ash").setExecutor(new Commands(this));
+		this.getCommand("soul").setExecutor(new Commands(this));
 		
 	}
 	
