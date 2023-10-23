@@ -1,4 +1,4 @@
-package com.ollicafe.dominationarcana.spells;
+package com.ollicafe.dominationarcana.arcane;
 
 public enum Arcana {
 	

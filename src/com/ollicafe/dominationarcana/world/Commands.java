@@ -6,9 +6,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.ollicafe.dominationarcana.DominationArcana;
-import com.ollicafe.dominationarcana.spells.Ash;
-import com.ollicafe.dominationarcana.spells.SpellManager;
-import com.ollicafe.dominationarcana.spells.SpellType;
+import com.ollicafe.dominationarcana.arcane.Ash;
+import com.ollicafe.dominationarcana.arcane.SpellManager;
+import com.ollicafe.dominationarcana.arcane.SpellType;
 
 public class Commands implements CommandExecutor{
 	

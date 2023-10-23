@@ -1,4 +1,4 @@
-package com.ollicafe.dominationarcana.spells;
+package com.ollicafe.dominationarcana.arcane;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

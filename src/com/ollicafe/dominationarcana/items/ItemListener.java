@@ -10,8 +10,8 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 import com.ollicafe.dominationarcana.DominationArcana;
-import com.ollicafe.dominationarcana.spells.SpellManager;
-import com.ollicafe.dominationarcana.spells.SpellType;
+import com.ollicafe.dominationarcana.arcane.SpellManager;
+import com.ollicafe.dominationarcana.arcane.SpellType;
 import com.ollicafe.dominationarcana.util.ItemUtil;
 
 public class ItemListener implements Listener{
