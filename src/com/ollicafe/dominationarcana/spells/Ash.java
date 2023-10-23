@@ -18,34 +18,15 @@ import org.bukkit.util.Vector;
 import com.ollicafe.dominationarcana.DominationArcana;
 import com.ollicafe.dominationarcana.util.BlockUtil;
 
-public class Ash extends Spell{
+public class Ash{
 	
 	private BlockUtil blockUtil = new BlockUtil();
 	private DominationArcana plugin;
 	
 	public Ash(DominationArcana plugin) {
 		this.plugin = plugin;
-		element = Element.ASH;
 	}
 	
-	public void castSpell(Player player, SpellType spellType) {
-		boolean casted = createEvent(player, spellType);
-		if(casted){//casts spell if event isn't cancelled
-			switch(spellType) {
-			case RETURN_TO_ASH:
-				returnToAsh(player.getLocation());
-				break;
-			case PYROCLASTIC_SURGE:
-				pyroclasticSurge(player);
-				break;
-			default:
-				System.out.println("Spell Type" + '"' + spellType.toString() + '"' +
-						" is invalid for the "+ "'" + element.toString() + '"' + " element" );
-				break;
-			}
-			
-		}
-	}
 	
 	//Powerful return to ash spell
 	public void returnToAsh(Location loc) {
@@ -146,9 +127,10 @@ public class Ash extends Spell{
 				for(int i = 0; i <= 33; i++) {
 					loc = loc.add(inc);
 					for(int j = 0; j <= 4; j++) {
-						TNTPrimed tnt = player.getWorld().spawn(loc, TNTPrimed.class);
+						/*TNTPrimed tnt = player.getWorld().spawn(loc, TNTPrimed.class);
 						tnt.setYield(i+2);
-						tnt.setFuseTicks(0);
+						tnt.setFuseTicks(0);*/
+						blockUtil.createExplosion(loc, i+2); // should do the same thing
 					}
 				}
 				

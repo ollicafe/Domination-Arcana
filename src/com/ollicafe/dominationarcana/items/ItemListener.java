@@ -10,19 +10,19 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 import com.ollicafe.dominationarcana.DominationArcana;
-import com.ollicafe.dominationarcana.spells.Ash;
+import com.ollicafe.dominationarcana.spells.SpellManager;
 import com.ollicafe.dominationarcana.spells.SpellType;
 import com.ollicafe.dominationarcana.util.ItemUtil;
 
 public class ItemListener implements Listener{
 	private ItemUtil iUtil = new ItemUtil();
 	private DominationArcana plugin;
-	private Ash ash;
+	private SpellManager sm;
 	
 	public ItemListener(DominationArcana plugin) {
 		this.plugin = plugin;
 		//initialize all the spells
-		this.ash = new Ash(plugin);
+		this.sm = new SpellManager(plugin);
 	}
 	
 	@EventHandler
@@ -47,11 +47,12 @@ public class ItemListener implements Listener{
 		//temp code
 		if(mItem.equals(new ItemStack(Material.NETHER_STAR)) 
 				&& oItem.equals(new ItemStack(Material.BOOK))) {
-			ash.castSpell(player, SpellType.RETURN_TO_ASH);
+			sm.castSpell(player, SpellType.RETURN_TO_ASH);
 		}
 		if(mItem.equals(new ItemStack(Material.BLAZE_ROD)) 
 				&& oItem.equals(new ItemStack(Material.BOOK))) {
-			ash.castSpell(player, SpellType.PYROCLASTIC_SURGE);
+			sm.castSpell(player, SpellType.PYROCLASTIC_SURGE);
+			
 		}
 		//check for combos first
 		if(!mItemType.equals(DAItem.NULL) && !oItemType.equals(DAItem.NULL)) {

@@ -7,15 +7,17 @@ import org.bukkit.entity.Player;
 
 import com.ollicafe.dominationarcana.DominationArcana;
 import com.ollicafe.dominationarcana.spells.Ash;
-import com.ollicafe.dominationarcana.spells.Spell;
+import com.ollicafe.dominationarcana.spells.SpellManager;
 import com.ollicafe.dominationarcana.spells.SpellType;
 
 public class Commands implements CommandExecutor{
 	
 	private DominationArcana plugin;
+	private SpellManager sm;
 	
 	public Commands(DominationArcana plugin) {
 		this.plugin = plugin;
+		this.sm = new SpellManager(plugin);
 	}
 	
 	@Override
@@ -23,10 +25,9 @@ public class Commands implements CommandExecutor{
 		if (label.equalsIgnoreCase("ash")) {
 			if(sender instanceof Player) {
 				Player player = (Player) sender;
-				Ash ash = new Ash(plugin);
 				
 				
-				ash.castSpell(player, SpellType.RETURN_TO_ASH);
+				sm.castSpell(player, SpellType.RETURN_TO_ASH);
 				player.sendMessage("return to ash");
 				return true;
 			} else {

@@ -6,7 +6,8 @@ import java.util.List;
 import org.bukkit.Location;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.TNTPrimed;
 
 public class BlockUtil {
 	
@@ -45,8 +46,34 @@ public class BlockUtil {
 				
 			}
 		}
-		
-		
+	}
+	
+	public void createExplosion(Location loc, int power) {
+		TNTPrimed tnt = loc.getWorld().spawn(loc, TNTPrimed.class);
+		tnt.setYield(power);
+		tnt.setFuseTicks(0);
+	}
+	
+	public void createExplosion(Location loc, float power, Entity ent) {
+		TNTPrimed tnt = loc.getWorld().spawn(loc, TNTPrimed.class);
+		tnt.setYield(power);
+		tnt.setSource(ent);
+		tnt.setFuseTicks(0);
+	}
+	
+	public void createExplosionF(Location loc, float power) {
+		TNTPrimed tnt = loc.getWorld().spawn(loc, TNTPrimed.class);
+		tnt.setYield(power);
+		tnt.setIsIncendiary(true);
+		tnt.setFuseTicks(0);
+	}
+	
+	public void createExplosionF(Location loc, float power, Entity ent) {
+		TNTPrimed tnt = loc.getWorld().spawn(loc, TNTPrimed.class);
+		tnt.setYield(power);
+		tnt.setSource(ent);
+		tnt.setIsIncendiary(true);
+		tnt.setFuseTicks(0);
 	}
 
 }
