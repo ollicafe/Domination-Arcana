@@ -12,6 +12,7 @@ public class SpellManager {
 	
 	public SpellManager(DominationArcana plugin) {
 		this.plugin = plugin;
+		this.ash = new Ash(plugin);
 	}
 	
 	public void castSpell(Player player, SpellType spellType) {
