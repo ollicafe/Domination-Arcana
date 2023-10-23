@@ -3,6 +3,7 @@ package com.ollicafe.dominationarcana;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.ollicafe.dominationarcana.arcane.SoulManager;
 import com.ollicafe.dominationarcana.arcane.SpellListener;
 import com.ollicafe.dominationarcana.items.ItemListener;
 import com.ollicafe.dominationarcana.world.Commands;
@@ -15,7 +16,8 @@ public class DominationArcana extends JavaPlugin{
 		System.out.println("Fall");
 		registerEvents();
 		this.getCommand("soul").setExecutor(new Commands(this));
-		
+		SoulManager sm = new SoulManager();
+		sm.initSoul();
 	}
 	
 	@Override

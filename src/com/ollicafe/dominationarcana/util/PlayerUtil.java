@@ -7,6 +7,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import com.ollicafe.dominationarcana.arcane.SoulManager;
+
 public class PlayerUtil {
 	
 	public List<Player> getPlayers(){
@@ -22,9 +24,10 @@ public class PlayerUtil {
 
 		List<Player> players = new ArrayList<Player>();
 		
-		
-		
 		return players;
 	}
+	
+	
+	
 
 }

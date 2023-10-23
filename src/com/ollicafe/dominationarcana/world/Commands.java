@@ -6,18 +6,20 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.ollicafe.dominationarcana.DominationArcana;
-import com.ollicafe.dominationarcana.arcane.Ash;
+import com.ollicafe.dominationarcana.arcane.Soul;
+import com.ollicafe.dominationarcana.arcane.SoulManager;
 import com.ollicafe.dominationarcana.arcane.SpellManager;
-import com.ollicafe.dominationarcana.arcane.SpellType;
 
 public class Commands implements CommandExecutor{
 	
 	private DominationArcana plugin;
-	private SpellManager sm;
+	private SpellManager spm;
+	private SoulManager som;
 	
 	public Commands(DominationArcana plugin) {
 		this.plugin = plugin;
-		this.sm = new SpellManager(plugin);
+		this.spm = new SpellManager(plugin);
+		this.som = new SoulManager();
 	}
 	
 	@Override
@@ -27,8 +29,10 @@ public class Commands implements CommandExecutor{
 				Player player = (Player) sender;
 				
 				
-				sm.castSpell(player, SpellType.RETURN_TO_ASH);
-				player.sendMessage("return to ash");
+				//spm.castSpell(player, SpellType.RETURN_TO_ASH);
+				Soul soul = som.getSoul(player);
+				soul.setLevel(soul.getLevel() + 1);
+				player.sendMessage("Your level is:" + soul.getLevel());
 				return true;
 			} else {
 				sender.sendMessage("Consoles can't sit silly");
