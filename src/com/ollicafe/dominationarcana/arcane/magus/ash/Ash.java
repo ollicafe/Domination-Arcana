@@ -1,4 +1,4 @@
-package com.ollicafe.dominationarcana.arcane;
+package com.ollicafe.dominationarcana.arcane.magus.ash;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +16,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import com.ollicafe.dominationarcana.DominationArcana;
+import com.ollicafe.dominationarcana.arcane.Soul;
 import com.ollicafe.dominationarcana.util.BlockUtil;
 
 public class Ash implements Listener{
@@ -49,7 +50,10 @@ public class Ash implements Listener{
 					
 					
 					for(FallingBlock b:fblocks) {
+						Location locB = b.getLocation();
+						turnAsh(locB.getX(),locB.getY(), locB.getZ());
 						b.remove();//turns blocks to ash
+						
 					}
 					
 					
@@ -143,6 +147,19 @@ public class Ash implements Listener{
 		}.runTaskTimer(plugin.getPlugin(plugin.getClass()), 0 ,0);
 		
 		return true;
+	}
+	
+	public AshDust turnAsh(Block block) {
+		turnAsh(block.getX(), block.getY(), block.getZ());
+		
+		return null;
+	}
+	
+	public AshDust turnAsh(double d, double e, double f) {
+		
+		
+		
+		return null;
 	}
 	
 	

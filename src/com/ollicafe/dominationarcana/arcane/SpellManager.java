@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.ollicafe.dominationarcana.DominationArcana;
+import com.ollicafe.dominationarcana.arcane.magus.ash.Ash;
 
 public class SpellManager {
 	

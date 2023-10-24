@@ -1,7 +1,9 @@
-package com.ollicafe.dominationarcana.arcane;
+package com.ollicafe.dominationarcana.arcane.alchemyst.iron;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+
+import com.ollicafe.dominationarcana.arcane.Soul;
 
 public class Iron {
 	

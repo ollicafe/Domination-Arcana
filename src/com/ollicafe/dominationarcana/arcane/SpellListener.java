@@ -18,5 +18,7 @@ public class SpellListener  implements Listener{
 				" by [" + e.getSoul().getEntity().getName() + "]");
 		
 	}
+	
+	
 
 }
