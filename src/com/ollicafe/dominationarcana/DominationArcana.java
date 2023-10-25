@@ -10,6 +10,8 @@ import com.ollicafe.dominationarcana.arcane.alchemyst.iron.IronListener;
 import com.ollicafe.dominationarcana.items.ItemListener;
 import com.ollicafe.dominationarcana.world.Commands;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class DominationArcana extends JavaPlugin{
 
 	public String sversion;
@@ -21,9 +23,10 @@ public class DominationArcana extends JavaPlugin{
 		SoulManager sm = new SoulManager();
 		sm.initSoul();
 		getLogger().info("[Arcana] has begun initializing...");
-		
-		System.out.println("Total soul power: " + sm.getTotalSoulPower());
-		System.out.println("[Magus] is awakening");
+		msg("Total " + ChatColor.BLUE + "[Soul]" + ChatColor.RESET + " power: " + sm.getTotalSoulPower());
+		msg(ChatColor.DARK_RED + "[Magus]" + ChatColor.RESET +" is awakening...");
+		msg(ChatColor.BLACK + "[Ash]" + ChatColor.RESET + " to " + ChatColor.BLACK + "[Ash]");
+		msg(ChatColor.GREEN + "[Alchemyst]" + ChatColor.RESET +" is brewing");
 		
 		getLogger().info("[Arcana] has finished initializing | Let absolute power reign");
 	}
@@ -54,5 +57,9 @@ public class DominationArcana extends JavaPlugin{
 		}
 		
 		return "tab" != null;
+	}
+	
+	public void msg(String string) {
+		getServer().getConsoleSender().sendMessage(string);
 	}
 }
