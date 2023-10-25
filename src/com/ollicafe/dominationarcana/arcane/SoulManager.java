@@ -26,5 +26,13 @@ public class SoulManager {
 		return false;
 	}
 	
+	public int getTotalSoulPower() {
+		int tsp = 0;
+		for(Soul soul: souls.values()) {
+			tsp += soul.getLevel();
+		}
+		return tsp;
+	}
+	
 
 }
