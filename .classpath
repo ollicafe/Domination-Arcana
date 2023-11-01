@@ -7,6 +7,7 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/olive/Desktop/TestServer/Spigot/Spigot-API/target/spigot-api-1.20.1-R0.1-SNAPSHOT-shaded.jar" sourcepath="C:/Users/olive/Desktop/TestServer/Spigot/Spigot-API/src/main/java"/>
-	<classpathentry kind="lib" path="C:/Users/olive/Desktop/TestServer/Spigot/Spigot-Server/target/spigot-1.20.1-R0.1-SNAPSHOT-remapped.jar"/>
+	<classpathentry kind="lib" path="C:/Users/olive/Desktop/TestServer/Spigot/Spigot-Server/target/spigot-1.20.1-R0.1-SNAPSHOT-remapped.jar" sourcepath="C:/Users/olive/Desktop/TestServer/Spigot/Spigot-Server/src"/>
+	<classpathentry kind="lib" path="C:/Users/olive/Desktop/Plugins/slf4j-v_1.7.36/integration/lib/slf4j-api-2.0.99.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -4,16 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.TNTPrimed;
 
+import net.minecraft.world.level.block.Blocks;
+
 public class BlockUtil {
 	
 	private PlayerUtil pUtil = new PlayerUtil();
 	
-	public List<Block> getNearbyBlocks(Location loc, int radius){
+	public List<Block> getNearbyTopBlocks(Location loc, int radius){
 		List<Block> blocks = new ArrayList<Block>();
 		for(int x = loc.getBlockX() - radius; x <= loc.getBlockX() + radius; x++) {
 			for(int z = loc.getBlockZ() - radius; z <= loc.getBlockZ() + radius; z++) {
@@ -23,6 +26,26 @@ public class BlockUtil {
 		
 		
 		return blocks;
+	}
+	
+	public List<Block> getAllNearbyBlocks(Location loc, int radius){
+		List<Block> blocks = new ArrayList<Block>();
+		for(int x = loc.getBlockX() - radius; x <= loc.getBlockX() + radius; x++) {
+			for(int y = loc.getBlockY() - radius; y <= loc.getBlockY() + radius; y++) {
+				for(int z = loc.getBlockZ() - radius; z <= loc.getBlockZ() + radius; z++) {
+					blocks.add(loc.getWorld().getBlockAt(x, y, z));
+				}
+			}
+		}
+		
+		for(Block b:blocks) {
+			if(b.getType().equals(Material.AIR)) {
+				blocks.remove(b);
+			}
+		}
+		
+		return blocks;
+		
 	}
 	
 	public void changeBiome(Location loc, int radius, Biome biome) {
@@ -44,6 +67,15 @@ public class BlockUtil {
 			for(int cZ = chunkZ - chunkRadius; cZ <= chunkZ + chunkRadius; cZ++) {
 				loc.getWorld().refreshChunk(cX,cZ);
 				
+			}
+		}
+	}
+	
+	public void removeWater(Location loc, int radius) {
+		List<Block> blocks = getAllNearbyBlocks(loc, radius);
+		for(Block b: blocks) {
+			if(b.getType().equals(Material.WATER)) {
+				b.setType(Material.AIR);
 			}
 		}
 	}

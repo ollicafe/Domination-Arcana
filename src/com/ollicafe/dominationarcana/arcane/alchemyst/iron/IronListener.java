@@ -14,7 +14,7 @@ public class IronListener implements Listener{
 		System.out.println("Right Click Iron Golem");
 //		if(!e.getHand().equals(EquipmentSlot.HAND))return;
 		Player player = e.getPlayer();
-		IronSuit suit = (IronSuit) e.getRightClicked();
+		//IronSuit suit = (IronSuit) e.getRightClicked();
 		
 		Iron iron = new Iron();
 		

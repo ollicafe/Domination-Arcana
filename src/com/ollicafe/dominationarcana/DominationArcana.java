@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.ollicafe.dominationarcana.arcane.SoulManager;
 import com.ollicafe.dominationarcana.arcane.SpellListener;
+import com.ollicafe.dominationarcana.arcane.SpellManager;
 import com.ollicafe.dominationarcana.arcane.alchemyst.iron.IronListener;
 import com.ollicafe.dominationarcana.items.ItemListener;
 import com.ollicafe.dominationarcana.world.Commands;
@@ -15,18 +16,20 @@ import net.md_5.bungee.api.ChatColor;
 public class DominationArcana extends JavaPlugin{
 
 	public String sversion;
+	private SpellManager spm;
 
 	@Override
 	public void onEnable() {
-		registerEvents();
-		this.getCommand("soul").setExecutor(new Commands(this));
+		getLogger().info("[Arcana] has begun initializing...");
+		spm = new SpellManager(this);
 		SoulManager sm = new SoulManager();
 		sm.initSoul();
-		getLogger().info("[Arcana] has begun initializing...");
 		msg("Total " + ChatColor.BLUE + "[Soul]" + ChatColor.RESET + " power: " + sm.getTotalSoulPower());
 		msg(ChatColor.DARK_RED + "[Magus]" + ChatColor.RESET +" is awakening...");
 		msg(ChatColor.BLACK + "[Ash]" + ChatColor.RESET + " to " + ChatColor.BLACK + "[Ash]");
 		msg(ChatColor.GREEN + "[Alchemyst]" + ChatColor.RESET +" is brewing");
+		registerEvents();
+		registerCommands();
 		
 		getLogger().info("[Arcana] has finished initializing | Let absolute power reign");
 	}
@@ -40,7 +43,14 @@ public class DominationArcana extends JavaPlugin{
 		PluginManager pm = this.getServer().getPluginManager();
 		pm.registerEvents(new SpellListener(), this);
 		pm.registerEvents(new IronListener(), this);
-		pm.registerEvents(new ItemListener(this), this);
+		pm.registerEvents(new ItemListener(this, spm), this);
+		
+		
+	}
+	
+	public void registerCommands() {
+
+		this.getCommand("soul").setExecutor(new Commands(this, spm));
 	}
 	
 	private boolean setupManager() {

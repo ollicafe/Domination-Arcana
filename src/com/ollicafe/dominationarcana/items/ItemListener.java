@@ -22,10 +22,10 @@ public class ItemListener implements Listener{
 	private SpellManager spm;
 	private SoulManager som;
 	
-	public ItemListener(DominationArcana plugin) {
+	public ItemListener(DominationArcana plugin, SpellManager spm) {
 		this.plugin = plugin;
 		//initialize all the spells
-		this.spm = new SpellManager(plugin);
+		this.spm = spm;
 		this.som = new SoulManager();
 	}
 	

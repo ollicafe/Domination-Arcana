@@ -9,6 +9,7 @@ import com.ollicafe.dominationarcana.DominationArcana;
 import com.ollicafe.dominationarcana.arcane.Soul;
 import com.ollicafe.dominationarcana.arcane.SoulManager;
 import com.ollicafe.dominationarcana.arcane.SpellManager;
+import com.ollicafe.dominationarcana.arcane.SpellType;
 
 public class Commands implements CommandExecutor{
 	
@@ -16,9 +17,9 @@ public class Commands implements CommandExecutor{
 	private SpellManager spm;
 	private SoulManager som;
 	
-	public Commands(DominationArcana plugin) {
+	public Commands(DominationArcana plugin,SpellManager spm) {
 		this.plugin = plugin;
-		this.spm = new SpellManager(plugin);
+		this.spm = spm;
 		this.som = new SoulManager();
 	}
 	
@@ -33,6 +34,7 @@ public class Commands implements CommandExecutor{
 				Soul soul = som.getSoul(player);
 				soul.setLevel(soul.getLevel() + 1);
 				player.sendMessage("Your level is: " + soul.getLevel());
+				spm.castSpell(soul, SpellType.SUMMON_SUIT);
 				return true;
 			} else {
 				sender.sendMessage("Consoles can't sit silly");

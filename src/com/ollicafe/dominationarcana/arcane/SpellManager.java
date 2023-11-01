@@ -4,16 +4,19 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.ollicafe.dominationarcana.DominationArcana;
+import com.ollicafe.dominationarcana.arcane.alchemyst.iron.Iron;
 import com.ollicafe.dominationarcana.arcane.magus.ash.Ash;
 
 public class SpellManager {
 	
-	public Ash ash;
-	public DominationArcana plugin;
+	private Ash ash;
+	private Iron iron;
+	private DominationArcana plugin;
 	
 	public SpellManager(DominationArcana plugin) {
 		this.plugin = plugin;
 		this.ash = new Ash(plugin);
+		this.iron = new Iron();
 	}
 	
 	public void castSpell(Soul soul, SpellType spellType) {
@@ -32,6 +35,7 @@ public class SpellManager {
 				break;
 			//Iron
 			case SUMMON_SUIT:
+				casted = iron.summonSuit(soul);
 				break;
 			default:
 				System.out.println("Spell Type" + '"' + spellType.toString() + '"' );
@@ -48,6 +52,11 @@ public class SpellManager {
 		Bukkit.getPluginManager().callEvent(event);
 		if(event.isCancelled()) return false;
 		return true;
+	}
+	
+	public void cleanup() {
+		//go through each domination and clean it up
+		
 	}
 
 }

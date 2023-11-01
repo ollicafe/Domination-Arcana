@@ -1,9 +1,13 @@
 package com.ollicafe.dominationarcana.arcane.alchemyst.iron;
 
+import org.bukkit.craftbukkit.v1_20_R1.CraftWorld;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
 import com.ollicafe.dominationarcana.arcane.Soul;
+
+import net.minecraft.server.level.WorldServer;
 
 public class Iron {
 	
@@ -35,7 +39,10 @@ public class Iron {
 		
 		//boss bar loading bar?
 		
-		
+		//for now, just make the suit
+		//IronSuit suit = new IronSuit(player.getLocation());
+		//WorldServer world = ((CraftWorld) player.getWorld()).getHandle();
+		//world.addFreshEntity(suit, SpawnReason.BUILD_IRONGOLEM);
 		
 		
 		return true;

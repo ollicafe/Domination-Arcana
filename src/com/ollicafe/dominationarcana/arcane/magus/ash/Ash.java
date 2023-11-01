@@ -19,13 +19,18 @@ import com.ollicafe.dominationarcana.DominationArcana;
 import com.ollicafe.dominationarcana.arcane.Soul;
 import com.ollicafe.dominationarcana.util.BlockUtil;
 
+import net.minecraft.world.level.block.Blocks;
+
 public class Ash implements Listener{
 	
 	private BlockUtil blockUtil = new BlockUtil();
 	private DominationArcana plugin;
 	
+	private ArrayList<AshDust> ashList;
+	
 	public Ash(DominationArcana plugin) {
 		this.plugin = plugin;
+		ashList = new ArrayList<AshDust>();
 	}
 	
 	
@@ -34,8 +39,9 @@ public class Ash implements Listener{
 		Location loc = soul.getEntity().getLocation();
 		int radius = 33 + (1* 1);//player level adds to radius
 
-		List<Block> blocks = blockUtil.getNearbyBlocks(loc, radius);
+		List<Block> blocks = blockUtil.getNearbyTopBlocks(loc, radius);
 		blockUtil.changeBiome(loc, radius, Biome.BASALT_DELTAS);
+		blockUtil.removeWater(loc, radius);
 		
 		new BukkitRunnable() {
 			int count = 0;
@@ -51,7 +57,7 @@ public class Ash implements Listener{
 					
 					for(FallingBlock b:fblocks) {
 						Location locB = b.getLocation();
-						turnAsh(locB.getX(),locB.getY(), locB.getZ());
+						createAsh(locB.getX(),locB.getY(), locB.getZ());
 						b.remove();//turns blocks to ash
 						
 					}
@@ -134,10 +140,17 @@ public class Ash implements Listener{
 			public void run() {
 				for(int i = 0; i <= 33; i++) {
 					loc = loc.add(inc);
+					//crumble the terrain;
+					List<Block> blocks = blockUtil.getAllNearbyBlocks(loc, 2* i);
+					Random r = new Random();
+					for(int k = 0; k < i*7;k++) {
+						Block b = blocks.get(r.nextInt(blocks.size()));
+						
+					}
+					//createAsh(loc.getBlockX(),loc.getBlockY(),loc.getBlockZ());
+					blockUtil.removeWater(loc, 2*i);
+					blockUtil.changeBiome(loc, i*2, Biome.BASALT_DELTAS);
 					for(int j = 0; j <= 4; j++) {
-						/*TNTPrimed tnt = player.getWorld().spawn(loc, TNTPrimed.class);
-						tnt.setYield(i+2);
-						tnt.setFuseTicks(0);*/
 						blockUtil.createExplosion(loc, i+2); // should do the same thing
 					}
 				}
@@ -149,23 +162,59 @@ public class Ash implements Listener{
 		return true;
 	}
 	
-	public AshDust turnAsh(Block block) {
-		turnAsh(block.getX(), block.getY(), block.getZ());
+	public boolean dirtyThunder(Soul soul) {
 		
+		
+		return true;
+	}
+	
+	private void crumble(Location loc, int radius) {
+		List<Block> blocks = blockUtil.getAllNearbyBlocks(loc, radius);
+		for(Block b: blocks) {
+			if(b.getType().equals(Material.AIR))
+				blocks.remove(b);
+		}
+		return;
+	}
+	
+	public AshDust turnAsh(Block block) {
+		block.setType(Material.AIR);
+		createAsh(block.getX(), block.getY(), block.getZ());
 		return null;
 	}
 	
-	public AshDust turnAsh(double d, double e, double f) {
+	public AshDust createAsh(double x, double y, double z) {
 		
+		AshDust ash = new AshDust(x,y,z,plugin);
+		ashList.add(ash);
 		
+		return ash;
+	}
+	
+	public ArrayList<AshDust> nearbyAsh(int x, int y, int z, int radius){
+		ArrayList<AshDust> ashes = new ArrayList<AshDust>();
 		
-		return null;
+		for(AshDust a: ashList) {
+			if((x-radius) < a.getX() && a.getX() < (x+radius) &&
+					(y-radius) < a.getY() && a.getY() < (y+radius) &&
+					(z-radius) < a.getZ() && a.getZ() < (z+radius)) {
+				ashes.add(a);
+			}
+		}
+		
+		return ashes;
 	}
 	
 	
 	//deals withering damage to entity
 	public void witheringTouch(Player player, Entity ent) {
 		
+	}
+	
+	public void clean() {
+		for(AshDust a:ashList) {
+			a.remove();
+		}
 	}
 	
 	
