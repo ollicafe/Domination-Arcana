@@ -1,4 +1,4 @@
-//package com.ollicafe.dominationarcana.arcane.alchemyst.iron;
+package com.ollicafe.dominationarcana.arcane.alchemyst.iron;
 //
 //import org.bukkit.Location;
 //import org.bukkit.craftbukkit.v1_20_R1.CraftWorld;
@@ -18,3 +18,7 @@
 //
 //	//this class is the custom iron golem
 //}
+
+public class IronSuit{
+	
+}
