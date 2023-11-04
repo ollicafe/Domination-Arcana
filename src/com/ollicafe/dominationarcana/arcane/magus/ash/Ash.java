@@ -136,26 +136,24 @@ public class Ash implements Listener{
 			Location origin = player.getEyeLocation();
 			Vector inc = dir.multiply(2);
 			Location loc = origin;
-			
+
+			Random r = new Random();
+			int i = 0;
 			public void run() {
-				for(int i = 0; i <= 33; i++) {
-					loc = loc.add(inc);
-					//crumble the terrain;
-					List<Block> blocks = blockUtil.getAllNearbyBlocks(loc, 2* i);
-					Random r = new Random();
-					for(int k = 0; k < i*7;k++) {
-						Block b = blocks.get(r.nextInt(blocks.size()));
-						
-					}
-					//createAsh(loc.getBlockX(),loc.getBlockY(),loc.getBlockZ());
-					blockUtil.removeWater(loc, 2*i);
-					blockUtil.changeBiome(loc, i*2, Biome.BASALT_DELTAS);
-					for(int j = 0; j <= 4; j++) {
-						blockUtil.createExplosion(loc, i+2); // should do the same thing
-					}
+				if(i>=33)
+					cancel();
+				
+				loc = loc.add(inc);
+				//createAsh(loc.getBlockX(),loc.getBlockY(),loc.getBlockZ());
+				blockUtil.removeWater(loc, i);
+				blockUtil.changeBiome(loc, i*2, Biome.BASALT_DELTAS);
+				for(int j = 0; j <= 4; j++) {
+					blockUtil.createExplosion(loc, i+2);
 				}
 				
-				cancel();
+				//mobs in area also get withered
+				
+				i++;
 			}
 		}.runTaskTimer(plugin.getPlugin(plugin.getClass()), 0 ,0);
 		
@@ -168,14 +166,6 @@ public class Ash implements Listener{
 		return true;
 	}
 	
-	private void crumble(Location loc, int radius) {
-		List<Block> blocks = blockUtil.getAllNearbyBlocks(loc, radius);
-		for(Block b: blocks) {
-			if(b.getType().equals(Material.AIR))
-				blocks.remove(b);
-		}
-		return;
-	}
 	
 	public AshDust turnAsh(Block block) {
 		block.setType(Material.AIR);

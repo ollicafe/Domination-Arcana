@@ -38,12 +38,6 @@ public class BlockUtil {
 			}
 		}
 		
-		for(Block b:blocks) {
-			if(b.getType().equals(Material.AIR)) {
-				blocks.remove(b);
-			}
-		}
-		
 		return blocks;
 		
 	}
@@ -73,11 +67,22 @@ public class BlockUtil {
 	
 	public void removeWater(Location loc, int radius) {
 		List<Block> blocks = getAllNearbyBlocks(loc, radius);
+		blocks.removeIf(b -> (!b.getType().equals(Material.WATER)));
 		for(Block b: blocks) {
 			if(b.getType().equals(Material.WATER)) {
 				b.setType(Material.AIR);
 			}
 		}
+//		//send update to nearby players for chunk change
+//		int chunkX = loc.getBlockX()/16,chunkZ = loc.getBlockZ()/16;
+//		int chunkRadius = (radius/16) + 1;
+//		
+//		for(int cX = chunkX - chunkRadius; cX <= chunkX + chunkRadius; cX++) {
+//			for(int cZ = chunkZ - chunkRadius; cZ <= chunkZ + chunkRadius; cZ++) {
+//				loc.getWorld().refreshChunk(cX,cZ);
+//				
+//			}
+//		}
 	}
 	
 	public void createExplosion(Location loc, int power) {

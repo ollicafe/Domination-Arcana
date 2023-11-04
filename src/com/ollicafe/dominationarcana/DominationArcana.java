@@ -26,7 +26,7 @@ public class DominationArcana extends JavaPlugin{
 		sm.initSoul();
 		msg("Total " + ChatColor.BLUE + "[Soul]" + ChatColor.RESET + " power: " + sm.getTotalSoulPower());
 		msg(ChatColor.DARK_RED + "[Magus]" + ChatColor.RESET +" is awakening...");
-		msg(ChatColor.BLACK + "[Ash]" + ChatColor.RESET + " to " + ChatColor.BLACK + "[Ash]");
+		msg(ChatColor.DARK_GRAY + "[Ash]" + ChatColor.RESET + " to " + ChatColor.DARK_GRAY + "[Ash]");
 		msg(ChatColor.GREEN + "[Alchemyst]" + ChatColor.RESET +" is brewing");
 		registerEvents();
 		registerCommands();
